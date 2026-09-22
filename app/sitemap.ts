@@ -11,11 +11,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'x-default': `${siteUrl}/en`,
   };
 
-  return locales.map((locale) => ({
-    url: `${siteUrl}/${locale}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly',
-    priority: locale === 'en' ? 1 : 0.9,
-    alternates: { languages },
-  }));
+  const contactLanguages = {
+    en: `${siteUrl}/en/contact`,
+    ar: `${siteUrl}/ar/contact`,
+    tr: `${siteUrl}/tr/contact`,
+    'x-default': `${siteUrl}/en/contact`,
+  };
+
+  return locales.flatMap((locale) => [
+    {
+      url: `${siteUrl}/${locale}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: locale === 'en' ? 1 : 0.9,
+      alternates: { languages },
+    },
+    {
+      url: `${siteUrl}/${locale}/contact`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: locale === 'en' ? 0.8 : 0.7,
+      alternates: { languages: contactLanguages },
+    },
+  ]);
 }

@@ -13,6 +13,9 @@ export type SiteCopy = {
   ctaTitle: string; ctaText: string; form: string[]; send: string; footer: string;
   formMessage: string; formRequired: string; formInvalidEmail: string; formSending: string;
   formSuccessTitle: string; formSuccessText: string; formErrorText: string; formSendAnother: string; formPhoneCode: string;
+  contactPageKicker: string; contactPageTitle: string; contactPageIntro: string; contactPageMetaTitle: string; contactPageMetaDescription: string;
+  contactLocationLabel: string; contactLocationValue: string; contactPhoneLabel: string; contactWhatsappLabel: string; contactEmailLabel: string; contactHoursLabel: string; contactHoursValue: string; contactMapTitle: string;
+  whatsappMessage: string; floatingWhatsappLabel: string; floatingCallLabel: string;
 };
 
 export const copy: Record<Locale, SiteCopy> = {
@@ -29,6 +32,10 @@ export const copy: Record<Locale, SiteCopy> = {
     ctaTitle: 'Begin your Istanbul property journey.', ctaText: 'Tell us what you are looking for. A HADARA advisor will contact you shortly.', form: ['First name', 'Last name', 'Email address', 'Phone number'], send: 'Request a consultation', footer: 'Luxury real estate development in Istanbul, Türkiye.',
     formMessage: 'Your message', formRequired: 'Please fill in all required fields.', formInvalidEmail: 'Please enter a valid email address.', formSending: 'Sending…',
     formSuccessTitle: 'Thank you for reaching out.', formSuccessText: 'We truly appreciate your interest in HADARA. Your message has been received, and one of our advisors will personally contact you shortly to assist you.', formErrorText: 'Something went wrong while sending your message. Please try again in a moment.', formSendAnother: 'Send another message', formPhoneCode: 'Country code',
+    contactPageKicker: 'Get in touch', contactPageTitle: 'We would love to hear from you.', contactPageIntro: 'Whether you are exploring a new home or considering an investment, our team in Istanbul is ready to guide you through every step.',
+    contactPageMetaTitle: 'Contact HADARA Real Estate | Istanbul', contactPageMetaDescription: 'Get in touch with HADARA Real Estate in Beylikdüzü, Istanbul. Call, message us on WhatsApp, or send an inquiry about our luxury villas and residential projects.',
+    contactLocationLabel: 'Location', contactLocationValue: 'Beylikdüzü, Istanbul, Türkiye', contactPhoneLabel: 'Phone', contactWhatsappLabel: 'WhatsApp', contactEmailLabel: 'Email', contactHoursLabel: 'Working hours', contactHoursValue: 'Monday – Saturday, 9:00 AM – 6:00 PM (closed Sundays)', contactMapTitle: 'Map showing HADARA in Beylikdüzü, Istanbul',
+    whatsappMessage: 'Hello, I would like to inquire about HADARA Real Estate projects.', floatingWhatsappLabel: 'Chat with us on WhatsApp', floatingCallLabel: 'Call HADARA Real Estate',
   },
   ar: {
     skip: 'انتقل إلى المحتوى', nav: ['الرئيسية', 'من نحن', 'المشاريع', 'لماذا تركيا', 'تواصل معنا'], search: 'بحث', searchPlaceholder: 'ابحث عن مشروع أو خدمة أو ميزة…', noResults: 'لا توجد نتائج مطابقة.', contact: 'تحدث مع فريقنا',
@@ -43,6 +50,10 @@ export const copy: Record<Locale, SiteCopy> = {
     ctaTitle: 'ابدأ رحلتك العقارية في إسطنبول.', ctaText: 'أخبرنا عمّا تبحث عنه وسيتواصل معك مستشار من حضارة قريبًا.', form: ['الاسم الأول', 'اسم العائلة', 'البريد الإلكتروني', 'رقم الهاتف'], send: 'اطلب استشارة', footer: 'تطوير عقاري فاخر في إسطنبول، تركيا.',
     formMessage: 'رسالتك', formRequired: 'يرجى تعبئة جميع الحقول المطلوبة.', formInvalidEmail: 'يرجى إدخال بريد إلكتروني صحيح.', formSending: 'جارٍ الإرسال…',
     formSuccessTitle: 'شكرًا جزيلاً لتواصلك معنا.', formSuccessText: 'يسعدنا اهتمامك بحضارة للتطوير العقاري. تم استلام رسالتك بنجاح، وسيتواصل معك أحد مستشارينا شخصيًا في أقرب وقت ممكن لمساعدتك.', formErrorText: 'حدث خطأ أثناء إرسال رسالتك. يرجى المحاولة مرة أخرى بعد قليل.', formSendAnother: 'إرسال رسالة أخرى', formPhoneCode: 'مفتاح الدولة',
+    contactPageKicker: 'تواصل معنا', contactPageTitle: 'يسعدنا تواصلك معنا.', contactPageIntro: 'سواء كنت تبحث عن منزل جديد أو تفكر باستثمار عقاري، فريقنا في إسطنبول جاهز لمرافقتك في كل خطوة.',
+    contactPageMetaTitle: 'تواصل مع حضارة للتطوير العقاري | إسطنبول', contactPageMetaDescription: 'تواصل مع حضارة للتطوير العقاري في بيليكدوزو، إسطنبول. اتصل بنا، راسلنا عبر واتساب، أو أرسل استفسارك حول فللنا الفاخرة ومشاريعنا السكنية.',
+    contactLocationLabel: 'الموقع', contactLocationValue: 'بيليكدوزو، إسطنبول، تركيا', contactPhoneLabel: 'الهاتف', contactWhatsappLabel: 'واتساب', contactEmailLabel: 'البريد الإلكتروني', contactHoursLabel: 'ساعات العمل', contactHoursValue: 'الإثنين – السبت، ٩ صباحًا – ٦ مساءً (عطلة يوم الأحد)', contactMapTitle: 'خريطة توضح موقع حضارة في بيليكدوزو، إسطنبول',
+    whatsappMessage: 'مرحبًا، أرغب بالاستفسار عن مشاريع حضارة العقارية.', floatingWhatsappLabel: 'تواصل معنا عبر واتساب', floatingCallLabel: 'اتصل بحضارة العقارية',
   },
   tr: {
     skip: 'İçeriğe geç', nav: ['Ana Sayfa', 'Hakkımızda', 'Projeler', 'Neden Türkiye', 'İletişim'], search: 'Ara', searchPlaceholder: 'Proje, olanak veya hizmet arayın…', noResults: 'Eşleşen sonuç bulunamadı.', contact: 'Ekibimizle görüşün',
@@ -57,5 +68,9 @@ export const copy: Record<Locale, SiteCopy> = {
     ctaTitle: 'İstanbul’daki gayrimenkul yolculuğunuza başlayın.', ctaText: 'Aradığınız evi bize anlatın. HADARA danışmanı kısa süre içinde sizinle iletişime geçsin.', form: ['Ad', 'Soyad', 'E-posta adresi', 'Telefon numarası'], send: 'Danışmanlık talep edin', footer: 'İstanbul, Türkiye’de lüks gayrimenkul geliştirme.',
     formMessage: 'Mesajınız', formRequired: 'Lütfen tüm gerekli alanları doldurun.', formInvalidEmail: 'Lütfen geçerli bir e-posta adresi girin.', formSending: 'Gönderiliyor…',
     formSuccessTitle: 'Bize ulaştığınız için teşekkür ederiz.', formSuccessText: 'HADARA’ya gösterdiğiniz ilgi için minnettarız. Mesajınız alındı; danışmanlarımızdan biri size yardımcı olmak üzere kısa süre içinde şahsen sizinle iletişime geçecek.', formErrorText: 'Mesajınız gönderilirken bir sorun oluştu. Lütfen kısa bir süre sonra tekrar deneyin.', formSendAnother: 'Başka bir mesaj gönder', formPhoneCode: 'Ülke kodu',
+    contactPageKicker: 'Bize ulaşın', contactPageTitle: 'Sizden haber almak isteriz.', contactPageIntro: 'İster yeni bir ev arıyor olun ister bir yatırımı değerlendiriyor olun, İstanbul’daki ekibimiz her adımda size rehberlik etmeye hazır.',
+    contactPageMetaTitle: 'HADARA Gayrimenkul ile İletişime Geçin | İstanbul', contactPageMetaDescription: 'Beylikdüzü, İstanbul’daki HADARA Gayrimenkul ile iletişime geçin. Bizi arayın, WhatsApp’tan yazın veya lüks villa ve konut projelerimiz hakkında bilgi talep edin.',
+    contactLocationLabel: 'Konum', contactLocationValue: 'Beylikdüzü, İstanbul, Türkiye', contactPhoneLabel: 'Telefon', contactWhatsappLabel: 'WhatsApp', contactEmailLabel: 'E-posta', contactHoursLabel: 'Çalışma saatleri', contactHoursValue: 'Pazartesi – Cumartesi, 09:00 – 18:00 (Pazar günleri kapalı)', contactMapTitle: 'Beylikdüzü, İstanbul’da HADARA’yı gösteren harita',
+    whatsappMessage: 'Merhaba, HADARA Gayrimenkul projeleri hakkında bilgi almak istiyorum.', floatingWhatsappLabel: 'WhatsApp’tan bize yazın', floatingCallLabel: 'HADARA Gayrimenkul’ü arayın',
   },
 };
