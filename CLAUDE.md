@@ -41,11 +41,15 @@ in chat history. Don't let it go stale.
   entry, each linking to its detail page.
 - `app/[locale]/projects/[slug]/page.tsx` — one page per project (slug is
   locale-invariant, e.g. `lotus-koru`), statically generated for every
-  locale × project via `generateStaticParams`. Layout: back link, tag +
-  name, full-width hero image, description + a `facts` panel
-  (`.project-facts-panel`), an optional photo `gallery` grid, then a bottom
-  CTA band (`.project-cta`) with three buttons — Contact page, phone
-  (`tel:`), and WhatsApp (`wa.me`, prefilled with the project's name
+  locale × project via `generateStaticParams`. Layout, top to bottom: back
+  link, tag + name, then one `.project-media` block holding the hero image
+  and (directly under it, no separate section) the `gallery` as an
+  always-3-across row — keep hero + gallery together like this rather than
+  splitting them into separate sections; a 2-column gallery grid stranded
+  the 3rd photo alone in its own row, which read as broken/unfinished.
+  Below that: description + a `facts` panel (`.project-facts-panel`), then
+  a bottom CTA band (`.project-cta`) with three buttons — Contact page,
+  phone (`tel:`), and WhatsApp (`wa.me`, prefilled with the project's name
   appended to the generic `whatsappMessage`). An unknown `slug` calls
   Next's `notFound()`.
 - `components/ContactForm.tsx` — client component, used on both the
