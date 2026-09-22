@@ -16,6 +16,7 @@ export type SiteCopy = {
   contactPageKicker: string; contactPageTitle: string; contactPageIntro: string; contactPageMetaTitle: string; contactPageMetaDescription: string;
   contactLocationLabel: string; contactLocationValue: string; contactPhoneLabel: string; contactWhatsappLabel: string; contactEmailLabel: string; contactHoursLabel: string; contactHoursValue: string; contactMapTitle: string;
   whatsappMessage: string; floatingWhatsappLabel: string; floatingCallLabel: string;
+  formFieldRequired: string; formRequiredNote: string; countryPriorityLabel: string; countryAllLabel: string;
 };
 
 export const copy: Record<Locale, SiteCopy> = {
@@ -36,6 +37,7 @@ export const copy: Record<Locale, SiteCopy> = {
     contactPageMetaTitle: 'Contact HADARA Real Estate | Istanbul', contactPageMetaDescription: 'Get in touch with HADARA Real Estate in Beylikdüzü, Istanbul. Call, message us on WhatsApp, or send an inquiry about our luxury villas and residential projects.',
     contactLocationLabel: 'Location', contactLocationValue: 'Beylikdüzü, Istanbul, Türkiye', contactPhoneLabel: 'Phone', contactWhatsappLabel: 'WhatsApp', contactEmailLabel: 'Email', contactHoursLabel: 'Working hours', contactHoursValue: 'Monday – Saturday, 9:00 AM – 6:00 PM (closed Sundays)', contactMapTitle: 'Map showing HADARA in Beylikdüzü, Istanbul',
     whatsappMessage: 'Hello, I would like to inquire about HADARA Real Estate projects.', floatingWhatsappLabel: 'Chat with us on WhatsApp', floatingCallLabel: 'Call HADARA Real Estate',
+    formFieldRequired: 'Required', formRequiredNote: '* Required field', countryPriorityLabel: 'Popular', countryAllLabel: 'All countries',
   },
   ar: {
     skip: 'انتقل إلى المحتوى', nav: ['الرئيسية', 'من نحن', 'المشاريع', 'لماذا تركيا', 'تواصل معنا'], search: 'بحث', searchPlaceholder: 'ابحث عن مشروع أو خدمة أو ميزة…', noResults: 'لا توجد نتائج مطابقة.', contact: 'تحدث مع فريقنا',
@@ -54,6 +56,7 @@ export const copy: Record<Locale, SiteCopy> = {
     contactPageMetaTitle: 'تواصل مع حضارة للتطوير العقاري | إسطنبول', contactPageMetaDescription: 'تواصل مع حضارة للتطوير العقاري في بيليكدوزو، إسطنبول. اتصل بنا، راسلنا عبر واتساب، أو أرسل استفسارك حول فللنا الفاخرة ومشاريعنا السكنية.',
     contactLocationLabel: 'الموقع', contactLocationValue: 'بيليكدوزو، إسطنبول، تركيا', contactPhoneLabel: 'الهاتف', contactWhatsappLabel: 'واتساب', contactEmailLabel: 'البريد الإلكتروني', contactHoursLabel: 'ساعات العمل', contactHoursValue: 'الإثنين – السبت، ٩ صباحًا – ٦ مساءً (عطلة يوم الأحد)', contactMapTitle: 'خريطة توضح موقع حضارة في بيليكدوزو، إسطنبول',
     whatsappMessage: 'مرحبًا، أرغب بالاستفسار عن مشاريع حضارة العقارية.', floatingWhatsappLabel: 'تواصل معنا عبر واتساب', floatingCallLabel: 'اتصل بحضارة العقارية',
+    formFieldRequired: 'حقل مطلوب', formRequiredNote: '* حقل مطلوب', countryPriorityLabel: 'الأكثر طلبًا', countryAllLabel: 'كل الدول',
   },
   tr: {
     skip: 'İçeriğe geç', nav: ['Ana Sayfa', 'Hakkımızda', 'Projeler', 'Neden Türkiye', 'İletişim'], search: 'Ara', searchPlaceholder: 'Proje, olanak veya hizmet arayın…', noResults: 'Eşleşen sonuç bulunamadı.', contact: 'Ekibimizle görüşün',
@@ -72,5 +75,6 @@ export const copy: Record<Locale, SiteCopy> = {
     contactPageMetaTitle: 'HADARA Gayrimenkul ile İletişime Geçin | İstanbul', contactPageMetaDescription: 'Beylikdüzü, İstanbul’daki HADARA Gayrimenkul ile iletişime geçin. Bizi arayın, WhatsApp’tan yazın veya lüks villa ve konut projelerimiz hakkında bilgi talep edin.',
     contactLocationLabel: 'Konum', contactLocationValue: 'Beylikdüzü, İstanbul, Türkiye', contactPhoneLabel: 'Telefon', contactWhatsappLabel: 'WhatsApp', contactEmailLabel: 'E-posta', contactHoursLabel: 'Çalışma saatleri', contactHoursValue: 'Pazartesi – Cumartesi, 09:00 – 18:00 (Pazar günleri kapalı)', contactMapTitle: 'Beylikdüzü, İstanbul’da HADARA’yı gösteren harita',
     whatsappMessage: 'Merhaba, HADARA Gayrimenkul projeleri hakkında bilgi almak istiyorum.', floatingWhatsappLabel: 'WhatsApp’tan bize yazın', floatingCallLabel: 'HADARA Gayrimenkul’ü arayın',
+    formFieldRequired: 'Zorunlu alan', formRequiredNote: '* Zorunlu alan', countryPriorityLabel: 'Popüler', countryAllLabel: 'Tüm ülkeler',
   },
 };

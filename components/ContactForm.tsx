@@ -1,26 +1,26 @@
 'use client';
-import { useState, type FormEvent } from 'react';
+import { useRef, useState, type FormEvent } from 'react';
 import { Arrow } from '@/components/Arrow';
+import { countryCodes, flagEmoji, priorityIso2 } from '@/content/countryCodes';
 import type { Locale, SiteCopy } from '@/content/site';
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const priorityCountries = priorityIso2.map(iso2 => countryCodes.find(c => c.iso2 === iso2)!);
 
-const countryCodes = [
-  { code: '+90', flag: '🇹🇷' },
-  { code: '+966', flag: '🇸🇦' },
-  { code: '+971', flag: '🇦🇪' },
-  { code: '+965', flag: '🇰🇼' },
-  { code: '+974', flag: '🇶🇦' },
-  { code: '+973', flag: '🇧🇭' },
-  { code: '+968', flag: '🇴🇲' },
-  { code: '+20', flag: '🇪🇬' },
-  { code: '+962', flag: '🇯🇴' },
-  { code: '+961', flag: '🇱🇧' },
-];
+type FieldName = 'firstName' | 'lastName' | 'email' | 'phoneNumber' | 'message';
+const fieldOrder: FieldName[] = ['firstName', 'lastName', 'email', 'phoneNumber', 'message'];
 
 export function ContactForm({ locale, d }: { locale: Locale; d: SiteCopy }) {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [error, setError] = useState('');
+  const [invalid, setInvalid] = useState<Partial<Record<FieldName, string>>>({});
+  const refs = {
+    firstName: useRef<HTMLInputElement>(null), lastName: useRef<HTMLInputElement>(null),
+    email: useRef<HTMLInputElement>(null), phoneNumber: useRef<HTMLInputElement>(null),
+    message: useRef<HTMLTextAreaElement>(null),
+  };
+
+  const clear = (name: FieldName) => setInvalid(prev => (prev[name] ? { ...prev, [name]: undefined } : prev));
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -36,9 +36,22 @@ export function ContactForm({ locale, d }: { locale: Locale; d: SiteCopy }) {
     const phone = phoneNumber && phoneCode ? `${phoneCode} ${phoneNumber}` : phoneNumber;
     const message = String(data.get('message') ?? '').trim();
 
-    if (!firstName || !lastName || !email || !phone || !message) { setStatus('error'); setError(d.formRequired); return; }
-    if (!emailPattern.test(email)) { setStatus('error'); setError(d.formInvalidEmail); return; }
+    const fieldErrors: Partial<Record<FieldName, string>> = {};
+    if (!firstName) fieldErrors.firstName = d.formFieldRequired;
+    if (!lastName) fieldErrors.lastName = d.formFieldRequired;
+    if (!email) fieldErrors.email = d.formFieldRequired;
+    else if (!emailPattern.test(email)) fieldErrors.email = d.formInvalidEmail;
+    if (!phoneNumber) fieldErrors.phoneNumber = d.formFieldRequired;
+    if (!message) fieldErrors.message = d.formFieldRequired;
 
+    if (Object.keys(fieldErrors).length) {
+      setInvalid(fieldErrors);
+      setStatus('error'); setError(d.formRequired);
+      refs[fieldOrder.find(k => fieldErrors[k])!].current?.focus();
+      return;
+    }
+
+    setInvalid({});
     setStatus('sending'); setError('');
     try {
       const res = await fetch('/api/contact', {
@@ -62,17 +75,19 @@ export function ContactForm({ locale, d }: { locale: Locale; d: SiteCopy }) {
     <form className="form" onSubmit={onSubmit} noValidate>
       <input type="text" name="company" tabIndex={-1} autoComplete="off" className="hp" aria-hidden="true" />
       <div>
-        <label>{d.form[0]}<input type="text" name="firstName" autoComplete="given-name" required /></label>
-        <label>{d.form[1]}<input type="text" name="lastName" autoComplete="family-name" required /></label>
-        <label>{d.form[2]}<input type="email" name="email" autoComplete="email" required /></label>
-        <label>{d.form[3]}<span className="phone-field"><select name="phoneCode" aria-label={d.formPhoneCode} defaultValue="">
+        <label>{d.form[0]}<span className="req">*</span><input ref={refs.firstName} type="text" name="firstName" autoComplete="given-name" required aria-invalid={!!invalid.firstName} className={invalid.firstName ? 'invalid' : undefined} onChange={() => clear('firstName')} />{invalid.firstName && <span className="field-error">{invalid.firstName}</span>}</label>
+        <label>{d.form[1]}<span className="req">*</span><input ref={refs.lastName} type="text" name="lastName" autoComplete="family-name" required aria-invalid={!!invalid.lastName} className={invalid.lastName ? 'invalid' : undefined} onChange={() => clear('lastName')} />{invalid.lastName && <span className="field-error">{invalid.lastName}</span>}</label>
+        <label>{d.form[2]}<span className="req">*</span><input ref={refs.email} type="email" name="email" autoComplete="email" required aria-invalid={!!invalid.email} className={invalid.email ? 'invalid' : undefined} onChange={() => clear('email')} />{invalid.email && <span className="field-error">{invalid.email}</span>}</label>
+        <label>{d.form[3]}<span className="req">*</span><span className="phone-field"><select name="phoneCode" aria-label={d.formPhoneCode} defaultValue="">
           <option value="">＋</option>
-          {countryCodes.map(c => <option key={c.code} value={c.code}>{c.flag} {c.code}</option>)}
-        </select><input type="tel" name="phoneNumber" autoComplete="tel" required /></span></label>
+          <optgroup label={d.countryPriorityLabel}>{priorityCountries.map(c => <option key={`p-${c.iso2}`} value={c.dial}>{flagEmoji(c.iso2)} {c.dial} {c.name}</option>)}</optgroup>
+          <optgroup label={d.countryAllLabel}>{countryCodes.map(c => <option key={c.iso2} value={c.dial}>{flagEmoji(c.iso2)} {c.dial} {c.name}</option>)}</optgroup>
+        </select><input ref={refs.phoneNumber} type="tel" name="phoneNumber" autoComplete="tel" required aria-invalid={!!invalid.phoneNumber} className={invalid.phoneNumber ? 'invalid' : undefined} onChange={() => clear('phoneNumber')} /></span>{invalid.phoneNumber && <span className="field-error">{invalid.phoneNumber}</span>}</label>
       </div>
-      <label className="form-message">{d.formMessage}<textarea name="message" rows={4} required /></label>
+      <label className="form-message">{d.formMessage}<span className="req">*</span><textarea ref={refs.message} name="message" rows={4} required aria-invalid={!!invalid.message} className={invalid.message ? 'invalid' : undefined} onChange={() => clear('message')} />{invalid.message && <span className="field-error">{invalid.message}</span>}</label>
       {status === 'error' && <p className="form-error" role="alert">{error}</p>}
-      <button type="submit" disabled={status === 'sending'}>{status === 'sending' ? d.formSending : d.send}<Arrow/></button>
+      <p className="form-note">{d.formRequiredNote}</p>
+      <button type="submit" disabled={status === 'sending'}><span className="btn-label">{status === 'sending' && <span className="spinner" aria-hidden="true"/>}{status === 'sending' ? d.formSending : d.send}</span><Arrow/></button>
     </form>
   );
 }
