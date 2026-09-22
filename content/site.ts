@@ -4,7 +4,7 @@ export const isLocale = (value: string): value is Locale => locales.includes(val
 
 export type SiteCopy = {
   skip: string; nav: string[]; search: string; searchPlaceholder: string; noResults: string; contact: string;
-  heroKicker: string; heroTitle: string; heroText: string; explore: string; since: string; stats: [string, string][];
+  heroKicker: string; heroTitle: string; heroText: string; heroImageAlt: string; interiorImageAlt: string; explore: string; since: string; stats: [string, string][];
   aboutKicker: string; aboutTitle: string; aboutText: string; fields: [string, string][];
   projectsKicker: string; projectsTitle: string; viewProject: string;
   projects: { name: string; tag: string; description: string; facts: string[]; image: string }[];
@@ -16,7 +16,7 @@ export type SiteCopy = {
 export const copy: Record<Locale, SiteCopy> = {
   en: {
     skip: 'Skip to content', nav: ['Home', 'About', 'Projects', 'Why Türkiye', 'Contact'], search: 'Search', searchPlaceholder: 'Search projects, amenities, or services…', noResults: 'No matching results found.', contact: 'Talk to our team',
-    heroKicker: 'Luxury real estate developer · Istanbul', heroTitle: 'Live beautifully.\nInvest wisely.', heroText: 'Distinctive homes and considered communities, created in Istanbul for modern life and long-term value.', explore: 'Explore our projects', since: 'Building with purpose since 2014', stats: [['2014', 'Founded in Istanbul'], ['2', 'Signature developments'], ['3', 'Regional partnerships']],
+    heroKicker: 'Luxury real estate developer · Istanbul', heroTitle: 'Live beautifully.\nInvest wisely.', heroText: 'Distinctive homes and considered communities, created in Istanbul for modern life and long-term value.', heroImageAlt: 'Istanbul skyline and Bosphorus waterfront at sunset', interiorImageAlt: 'Contemporary luxury residential interior in Istanbul', explore: 'Explore our projects', since: 'Building with purpose since 2014', stats: [['2014', 'Founded in Istanbul'], ['2', 'Signature developments'], ['3', 'Regional partnerships']],
     aboutKicker: 'Who we are', aboutTitle: 'Spaces designed for the way life should feel.', aboutText: 'HADARA is an Istanbul-based developer of luxury villas and high-quality residential projects. Since 2014, we have combined elegant design, sustainable construction, and premium living environments for families and investors, supported by trusted partnerships across Qatar, Kuwait, and Saudi Arabia.', fields: [['01', 'Architectural services'], ['02', 'Residential project development'], ['03', 'Building materials export']],
     projectsKicker: 'Selected developments', projectsTitle: 'A considered approach to place.', viewProject: 'View project', projects: [
       { name: 'Marmara Haven Villa', tag: 'Private villa · Marmara coast', description: 'A private seaside haven on a 637 m² plot, with open views, a private elevator, deep-water well, and full smart-home system.', facts: ['4 floors', '576 m²', '5 bedrooms', '7 bathrooms'], image: '/images/architecture.jpg' },
@@ -28,7 +28,7 @@ export const copy: Record<Locale, SiteCopy> = {
   },
   ar: {
     skip: 'انتقل إلى المحتوى', nav: ['الرئيسية', 'من نحن', 'المشاريع', 'لماذا تركيا', 'تواصل معنا'], search: 'بحث', searchPlaceholder: 'ابحث عن مشروع أو خدمة أو ميزة…', noResults: 'لا توجد نتائج مطابقة.', contact: 'تحدث مع فريقنا',
-    heroKicker: 'تطوير عقاري فاخر · إسطنبول', heroTitle: 'عِش بجمال.\nواستثمر بحكمة.', heroText: 'منازل استثنائية ومجتمعات مدروسة نصنعها في إسطنبول للحياة العصرية والقيمة طويلة الأمد.', explore: 'استكشف مشاريعنا', since: 'نبني بهدف منذ عام 2014', stats: [['2014', 'تأسست في إسطنبول'], ['2', 'مشروعان مميزان'], ['3', 'شراكات إقليمية']],
+    heroKicker: 'تطوير عقاري فاخر · إسطنبول', heroTitle: 'عِش بجمال.\nواستثمر بحكمة.', heroText: 'منازل استثنائية ومجتمعات مدروسة نصنعها في إسطنبول للحياة العصرية والقيمة طويلة الأمد.', heroImageAlt: 'أفق إسطنبول ومضيق البوسفور وقت الغروب', interiorImageAlt: 'تصميم داخلي فاخر لشقة سكنية عصرية في إسطنبول', explore: 'استكشف مشاريعنا', since: 'نبني بهدف منذ عام 2014', stats: [['2014', 'تأسست في إسطنبول'], ['2', 'مشروعان مميزان'], ['3', 'شراكات إقليمية']],
     aboutKicker: 'من نحن', aboutTitle: 'مساحات مصممة لتمنح الحياة شعورها الحقيقي.', aboutText: 'حضارة مطوّر عقاري مقره إسطنبول، متخصص في الفلل الفاخرة والمشاريع السكنية عالية الجودة. منذ عام 2014، نجمع بين التصميم الأنيق والبناء المستدام وبيئات العيش الراقية للعائلات والمستثمرين.', fields: [['01', 'الخدمات المعمارية'], ['02', 'تطوير المشاريع السكنية'], ['03', 'تصدير مواد البناء']],
     projectsKicker: 'مشاريع مختارة', projectsTitle: 'رؤية مدروسة للمكان.', viewProject: 'عرض المشروع', projects: [
       { name: 'فيلا Marmara Haven', tag: 'فيلا خاصة · ساحل مرمرة', description: 'ملاذ خاص على البحر فوق أرض بمساحة 637 م²، بإطلالات مفتوحة ومصعد خاص وبئر مياه عميق ونظام منزل ذكي متكامل.', facts: ['4 طوابق', '576 م²', '5 غرف نوم', '7 حمامات'], image: '/images/architecture.jpg' },
@@ -40,7 +40,7 @@ export const copy: Record<Locale, SiteCopy> = {
   },
   tr: {
     skip: 'İçeriğe geç', nav: ['Ana Sayfa', 'Hakkımızda', 'Projeler', 'Neden Türkiye', 'İletişim'], search: 'Ara', searchPlaceholder: 'Proje, olanak veya hizmet arayın…', noResults: 'Eşleşen sonuç bulunamadı.', contact: 'Ekibimizle görüşün',
-    heroKicker: 'Lüks gayrimenkul geliştiricisi · İstanbul', heroTitle: 'Güzel yaşayın.\nAkıllıca yatırım yapın.', heroText: 'İstanbul’da modern yaşam ve uzun vadeli değer için tasarlanan seçkin evler ve özenli yaşam alanları.', explore: 'Projelerimizi keşfedin', since: '2014’ten beri amaçla inşa ediyoruz', stats: [['2014', 'İstanbul’da kuruldu'], ['2', 'Özel proje'], ['3', 'Bölgesel ortaklık']],
+    heroKicker: 'Lüks gayrimenkul geliştiricisi · İstanbul', heroTitle: 'Güzel yaşayın.\nAkıllıca yatırım yapın.', heroText: 'İstanbul’da modern yaşam ve uzun vadeli değer için tasarlanan seçkin evler ve özenli yaşam alanları.', heroImageAlt: 'Gün batımında İstanbul silüeti ve Boğaz kıyısı', interiorImageAlt: 'İstanbul’da çağdaş lüks konut iç mekânı', explore: 'Projelerimizi keşfedin', since: '2014’ten beri amaçla inşa ediyoruz', stats: [['2014', 'İstanbul’da kuruldu'], ['2', 'Özel proje'], ['3', 'Bölgesel ortaklık']],
     aboutKicker: 'Biz kimiz', aboutTitle: 'Hayatın hissettirmesi gerektiği gibi tasarlanan mekânlar.', aboutText: 'HADARA, İstanbul merkezli lüks villa ve nitelikli konut projeleri geliştiricisidir. 2014’ten bu yana aileler ve yatırımcılar için zarif tasarım, sürdürülebilir yapı ve seçkin yaşam alanlarını bir araya getiriyoruz.', fields: [['01', 'Mimari hizmetler'], ['02', 'Konut projesi geliştirme'], ['03', 'Yapı malzemeleri ihracatı']],
     projectsKicker: 'Seçili projeler', projectsTitle: 'Mekâna özenli bir yaklaşım.', viewProject: 'Projeyi görüntüle', projects: [
       { name: 'Marmara Haven Villa', tag: 'Özel villa · Marmara kıyısı', description: '637 m² arsa üzerinde açık manzaralar, özel asansör, derin su kuyusu ve tam akıllı ev sistemi sunan deniz kenarı villası.', facts: ['4 kat', '576 m²', '5 yatak odası', '7 banyo'], image: '/images/architecture.jpg' },
