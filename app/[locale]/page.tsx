@@ -81,7 +81,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         'max-video-preview': -1,
       },
     },
-    icons: { icon: '/favicon.svg' },
   };
 }
 
@@ -98,7 +97,7 @@ export default async function Page({ params }: Props) {
         '@id': `${siteUrl}/#organization`,
         name: 'HADARA Real Estate',
         url: siteUrl,
-        logo: `${siteUrl}/favicon.svg`,
+        logo: `${siteUrl}/images/logo.png`,
         foundingDate: '2014',
         description: pageSeo.description,
         areaServed: ['Istanbul', 'Türkiye'],

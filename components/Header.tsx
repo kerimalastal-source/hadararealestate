@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { copy, locales, type Locale } from '@/content/site';
@@ -17,7 +18,7 @@ export function Header({ locale }: { locale: Locale }) {
   ].filter(x => !query.trim() || `${x.label} ${x.text}`.toLocaleLowerCase(locale).includes(query.toLocaleLowerCase(locale))), [d, locale, query]);
   const targets = [`/${locale}#home`, `/${locale}#about`, `/${locale}#projects`, `/${locale}#invest`, `/${locale}/contact`];
   return <>
-    <header className="header"><div className="header-inner"><Link className="logo" href={`/${locale}`}><strong>HADARA</strong><span>REAL ESTATE</span></Link>
+    <header className="header"><div className="header-inner"><Link className="logo" href={`/${locale}`}><Image src="/images/logo.png" alt="HADARA" width={730} height={894} className="logo-mark" priority /><span className="logo-text"><strong>HADARA</strong><span>REAL ESTATE</span></span></Link>
       <nav className={menu ? 'nav open' : 'nav'}>{d.nav.map((x, i) => <a key={x} href={targets[i]} onClick={() => setMenu(false)}>{x}</a>)}</nav>
       <div className="header-actions"><button className="search-button" onClick={() => setSearch(true)} aria-label={d.search}><span>⌕</span>{d.search}</button><div className="languages">{locales.map(l => <Link key={l} href={`/${l}`} aria-current={l === locale ? 'page' : undefined}>{l.toUpperCase()}</Link>)}</div><a className="header-cta" href={`/${locale}/contact`}>{d.contact}<b>↗</b></a><button className="menu" onClick={() => setMenu(!menu)} aria-expanded={menu}>{menu ? '×' : '☰'}</button></div>
     </div></header>

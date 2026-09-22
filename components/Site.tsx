@@ -19,5 +19,5 @@ export function Site({ locale }: { locale: Locale }) {
 
 export function Footer({ locale }: { locale: Locale }) {
   const d = copy[locale];
-  return <footer><div className="wrap footer-inner"><Link className="logo" href={`/${locale}`}><strong>HADARA</strong><span>REAL ESTATE</span></Link><p>{d.footer}</p><p>© {new Date().getFullYear()} HADARA Real Estate.</p></div></footer>;
+  return <footer><div className="wrap footer-inner"><Link className="logo" href={`/${locale}`}><Image src="/images/logo-gold.png" alt="HADARA" width={730} height={894} className="logo-mark footer-logo-mark" /><span className="logo-text"><strong>HADARA</strong><span>REAL ESTATE</span></span></Link><p>{d.footer}</p><p>© {new Date().getFullYear()} HADARA Real Estate.</p></div></footer>;
 }
