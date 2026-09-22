@@ -47,8 +47,11 @@ export default async function ProjectDetailPage({ params }: Props) {
       <p className="kicker dark">{p.tag}</p>
       <h1>{p.name}</h1>
     </section>
-    <section className="project-hero wrap"><Image src={p.image} alt={p.name} fill priority sizes="100vw"/></section>
-    <section className="project-body section wrap">
+    <section className="project-media wrap">
+      <div className="project-hero"><Image src={p.image} alt={p.name} fill priority sizes="100vw"/></div>
+      {p.gallery.length > 0 && <div className="gallery-grid" role="group" aria-label={d.projectGalleryLabel}>{p.gallery.map((src, i) => <div className="gallery-item" key={src}><Image src={src} alt={`${p.name} ${i + 2}`} fill sizes="(max-width:720px) 100vw, (max-width:1080px) 50vw, 33vw"/></div>)}</div>}
+    </section>
+    <section className="project-body wrap">
       <div className="project-body-copy">
         <p className="lead">{p.description}</p>
       </div>
@@ -57,10 +60,6 @@ export default async function ProjectDetailPage({ params }: Props) {
         <ul className="project-facts">{p.facts.map(f => <li key={f}>{f}</li>)}</ul>
       </div>
     </section>
-    {p.gallery.length > 0 && <section className="project-gallery section wrap">
-      <p className="kicker dark">{d.projectGalleryLabel}</p>
-      <div className="gallery-grid">{p.gallery.map((src, i) => <div className="gallery-item" key={src}><Image src={src} alt={`${p.name} ${i + 2}`} fill sizes="(max-width:720px) 100vw, 50vw"/></div>)}</div>
-    </section>}
     <section className="project-cta section">
       <div className="wrap project-cta-inner">
         <div><p className="kicker">HADARA · ISTANBUL</p><h2>{d.projectCtaTitle}</h2><p className="lead">{d.projectCtaText}</p></div>
