@@ -24,7 +24,7 @@ in chat history. Don't let it go stale.
   and `priorityIso2` (Turkey + Gulf countries, shown first in their own
   optgroup since that's HADARA's actual audience).
 - `components/Site.tsx` — homepage sections (hero, about, projects,
-  amenities, invest, contact CTA) + `Footer`.
+  partners, amenities, invest, contact CTA) + `Footer`.
 - `components/Header.tsx` — sticky nav, language switcher, search modal.
   Client component. All internal links are locale-prefixed absolute paths
   (`/${locale}#about`, `/${locale}/contact`, etc.), not bare `#anchor`s —
@@ -65,6 +65,23 @@ in chat history. Don't let it go stale.
   mirrors the sibling `hadarahospitality` site's logo exactly (76px header
   / 42px footer) at the client's request — check that repo again before
   changing these if it's redesigned.
+- `public/images/partners/` — trust-signal logos for the homepage "Partners
+  in success" (شركاء النجاح) strip, between the projects and amenities
+  sections. Sourced from the client's Google Drive (`Hadara Real Estate` →
+  `partner` folder), processed locally with `sharp`: flattened onto white,
+  cropped to content bounds. One source file (`LOTUS.png`) had leftover
+  black corner crop-marks baked into the PNG (an artboard/registration
+  frame, not part of the actual logo) — removed by measuring the exact
+  mark geometry per-pixel (contiguous near-black runs from each corner)
+  and painting those precise rectangles white before trimming, rather than
+  a blind crop, to avoid clipping the real artwork. Currently 3 logos are
+  in: LOTUS (Turkish developer), Faisal Holding, WUJHA Development. The
+  client uploaded ~6 logos total; 3 more (`images (1).png`, `5379.jpg`,
+  `16012123561541.png`) failed to transfer cleanly from Drive in this
+  session (corrupted/truncated) and still need to be re-fetched and added
+  — ask the client to re-share if this keeps failing. Displayed in
+  `.partner-grid`/`.partner-logo` (grayscale, full color on hover) — see
+  `styles/globals.css`.
 
 ## Conventions worth knowing before editing
 

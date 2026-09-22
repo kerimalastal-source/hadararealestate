@@ -8,6 +8,8 @@ export type SiteCopy = {
   aboutKicker: string; aboutTitle: string; aboutText: string; fields: [string, string][];
   projectsKicker: string; projectsTitle: string; viewProject: string;
   projects: { name: string; tag: string; description: string; facts: string[]; image: string }[];
+  partnersKicker: string; partnersTitle: string;
+  partners: { name: string; image: string; width: number; height: number }[];
   amenityKicker: string; amenityTitle: string; amenities: string[];
   investKicker: string; investTitle: string; investText: string; investPoints: string[];
   ctaTitle: string; ctaText: string; form: string[]; send: string; footer: string;
@@ -28,6 +30,11 @@ export const copy: Record<Locale, SiteCopy> = {
       { name: 'Marmara Haven Villa', tag: 'Private villa · Marmara coast', description: 'A private seaside haven on a 637 m² plot, with open views, a private elevator, deep-water well, and full smart-home system.', facts: ['4 floors', '576 m²', '5 bedrooms', '7 bathrooms'], image: '/images/architecture.jpg' },
       { name: 'Beylikdüzü Living', tag: 'New residential project · Istanbul', description: 'A 21,000 m² residential development shaped around modern living, comprehensive social amenities, flexible installments, and delivery at the end of 2028.', facts: ['21,000 m² land', 'Social amenities', 'Flexible payment', 'Delivery 2028'], image: '/images/istanbul.jpg' },
     ],
+    partnersKicker: 'Trusted collaborations', partnersTitle: 'Partners in success.', partners: [
+      { name: 'LOTUS', image: '/images/partners/lotus.png', width: 1342, height: 362 },
+      { name: 'Faisal Holding', image: '/images/partners/faisal-holding.png', width: 505, height: 143 },
+      { name: 'WUJHA Development', image: '/images/partners/wujha.png', width: 219, height: 86 },
+    ],
     amenityKicker: 'Elevated living', amenityTitle: 'Everyday comfort, thoughtfully included.', amenities: ['Residents club', 'Private fitness center', 'Concierge services', 'Valet parking', 'Co-working spaces', 'Rooftop & infinity pool', 'Smart-home integration'],
     investKicker: 'Live & invest in Türkiye', investTitle: 'A home with a wider horizon.', investText: 'Our team supports international buyers through the property journey, from choosing the right home to understanding residence and citizenship pathways linked to qualified real estate investment.', investPoints: ['Property residence guidance', 'Turkish citizenship pathways', 'Local market expertise'],
     ctaTitle: 'Begin your Istanbul property journey.', ctaText: 'Tell us what you are looking for. A HADARA advisor will contact you shortly.', form: ['First name', 'Last name', 'Email address', 'Phone number'], send: 'Request a consultation', footer: 'Luxury real estate development in Istanbul, Türkiye.',
@@ -47,6 +54,11 @@ export const copy: Record<Locale, SiteCopy> = {
       { name: 'فيلا Marmara Haven', tag: 'فيلا خاصة · ساحل مرمرة', description: 'ملاذ خاص على البحر فوق أرض بمساحة 637 م²، بإطلالات مفتوحة ومصعد خاص وبئر مياه عميق ونظام منزل ذكي متكامل.', facts: ['4 طوابق', '576 م²', '5 غرف نوم', '7 حمامات'], image: '/images/architecture.jpg' },
       { name: 'Beylikdüzü Living', tag: 'مشروع سكني جديد · إسطنبول', description: 'مشروع سكني على مساحة 21,000 م² للحياة العصرية، بمرافق اجتماعية متكاملة وخطط دفع مرنة وتسليم نهاية 2028.', facts: ['أرض 21,000 م²', 'مرافق اجتماعية', 'دفع مرن', 'تسليم 2028'], image: '/images/istanbul.jpg' },
     ],
+    partnersKicker: 'شراكات موثوقة', partnersTitle: 'شركاء النجاح.', partners: [
+      { name: 'LOTUS', image: '/images/partners/lotus.png', width: 1342, height: 362 },
+      { name: 'Faisal Holding', image: '/images/partners/faisal-holding.png', width: 505, height: 143 },
+      { name: 'WUJHA Development', image: '/images/partners/wujha.png', width: 219, height: 86 },
+    ],
     amenityKicker: 'حياة أرقى', amenityTitle: 'راحة يومية صُممت بعناية.', amenities: ['نادي السكان', 'مركز لياقة خاص', 'خدمات الكونسيرج', 'خدمة صف السيارات', 'مساحات عمل مشتركة', 'سطح ومسبح إنفينيتي', 'أنظمة المنزل الذكي'],
     investKicker: 'عِش واستثمر في تركيا', investTitle: 'منزل يفتح لك أفقًا أوسع.', investText: 'ندعم المشترين الدوليين في رحلتهم العقارية، من اختيار المنزل المناسب إلى فهم مسارات الإقامة والجنسية المرتبطة بالاستثمار العقاري المؤهل.', investPoints: ['إرشاد الإقامة العقارية', 'مسارات الجنسية التركية', 'خبرة بالسوق المحلي'],
     ctaTitle: 'ابدأ رحلتك العقارية في إسطنبول.', ctaText: 'أخبرنا عمّا تبحث عنه وسيتواصل معك مستشار من حضارة قريبًا.', form: ['الاسم الأول', 'اسم العائلة', 'البريد الإلكتروني', 'رقم الهاتف'], send: 'اطلب استشارة', footer: 'تطوير عقاري فاخر في إسطنبول، تركيا.',
@@ -65,6 +77,11 @@ export const copy: Record<Locale, SiteCopy> = {
     projectsKicker: 'Seçili projeler', projectsTitle: 'Mekâna özenli bir yaklaşım.', viewProject: 'Projeyi görüntüle', projects: [
       { name: 'Marmara Haven Villa', tag: 'Özel villa · Marmara kıyısı', description: '637 m² arsa üzerinde açık manzaralar, özel asansör, derin su kuyusu ve tam akıllı ev sistemi sunan deniz kenarı villası.', facts: ['4 kat', '576 m²', '5 yatak odası', '7 banyo'], image: '/images/architecture.jpg' },
       { name: 'Beylikdüzü Living', tag: 'Yeni konut projesi · İstanbul', description: 'Modern yaşam, kapsamlı sosyal olanaklar, esnek taksitler ve 2028 sonu teslim planıyla şekillenen 21.000 m² konut projesi.', facts: ['21.000 m² arsa', 'Sosyal olanaklar', 'Esnek ödeme', '2028 teslim'], image: '/images/istanbul.jpg' },
+    ],
+    partnersKicker: 'Güvenilir iş birlikleri', partnersTitle: 'Başarı ortaklarımız.', partners: [
+      { name: 'LOTUS', image: '/images/partners/lotus.png', width: 1342, height: 362 },
+      { name: 'Faisal Holding', image: '/images/partners/faisal-holding.png', width: 505, height: 143 },
+      { name: 'WUJHA Development', image: '/images/partners/wujha.png', width: 219, height: 86 },
     ],
     amenityKicker: 'Seçkin yaşam', amenityTitle: 'Gündelik konfor, özenle düşünüldü.', amenities: ['Sakinler kulübü', 'Özel fitness merkezi', 'Concierge hizmetleri', 'Vale hizmeti', 'Ortak çalışma alanları', 'Çatı terası ve sonsuzluk havuzu', 'Akıllı ev entegrasyonu'],
     investKicker: 'Türkiye’de yaşayın ve yatırım yapın', investTitle: 'Daha geniş bir ufka açılan ev.', investText: 'Uluslararası alıcılara doğru evi seçmekten oturum ve vatandaşlık yollarını anlamaya kadar gayrimenkul yolculuğunda destek oluyoruz.', investPoints: ['Gayrimenkul oturum rehberliği', 'Türk vatandaşlığı yolları', 'Yerel pazar uzmanlığı'],
