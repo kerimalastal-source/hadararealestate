@@ -52,6 +52,19 @@ in chat history. Don't let it go stale.
   `--deep`, `--gold`, `--cream`, `--line`, `--wrap`). Dense, minified-ish
   formatting is the established convention here — match it rather than
   reformatting into one-rule-per-line.
+- `public/images/logo.png` / `logo-gold.png` — the real HADARA "HE" mark,
+  sourced from the client's Google Drive (Hadara Real Estate folder) and
+  processed locally (trimmed, JPEG white knocked out to alpha with a
+  thresholded — not linear — luma cutoff, see git history for the script)
+  into two transparent PNGs: plain ink for the header (white bg), gold
+  (`#c6a764`, matches `--gold`) for the footer (dark bg). Used via
+  `.logo-mark` / `.footer-logo-mark` in `Header.tsx` and `Site.tsx`'s
+  `Footer`. `app/icon.png` and `app/apple-icon.png` (Next's file-based
+  favicon convention — no manual `<link>` or metadata needed) are the same
+  mark, composited onto transparent/white canvases respectively. Sizing
+  mirrors the sibling `hadarahospitality` site's logo exactly (76px header
+  / 42px footer) at the client's request — check that repo again before
+  changing these if it's redesigned.
 
 ## Conventions worth knowing before editing
 
