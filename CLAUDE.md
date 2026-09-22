@@ -18,6 +18,11 @@ in chat history. Don't let it go stale.
 - `content/business.ts` — non-translatable business constants (phone,
   WhatsApp, email). Doesn't belong in `site.ts` because it's the same value
   across languages, just displayed with translated labels.
+- `content/countryCodes.ts` — full world list of `{name, iso2, dial}` for
+  the contact form's phone country-code `<select>`, plus a `flagEmoji()`
+  helper (built from ISO2 via Unicode regional indicators, not hand-typed)
+  and `priorityIso2` (Turkey + Gulf countries, shown first in their own
+  optgroup since that's HADARA's actual audience).
 - `components/Site.tsx` — homepage sections (hero, about, projects,
   amenities, invest, contact CTA) + `Footer`.
 - `components/Header.tsx` — sticky nav, language switcher, search modal.
@@ -61,6 +66,13 @@ in chat history. Don't let it go stale.
   hand-authored inline SVGs matching the site's thin-line aesthetic. Keep
   new icons consistent with that (stroke, not filled; `currentColor`).
 - Comments are rare on purpose; only added for non-obvious constraints.
+- A native `<select>` with long option text (e.g. full country names) sizes
+  its closed-state width to the *widest* option in Chromium — it silently
+  squeezed a sibling flex item (`.phone-field input`) to zero width once
+  the country list grew past a handful of entries. Fixed with an explicit
+  `width` on the select instead of `auto`, plus `min-width:0` on the input
+  (the standard flex-shrink fix). Worth remembering before adding another
+  `<select>` next to a flex sibling.
 
 ## Deployment
 
@@ -68,21 +80,32 @@ in chat history. Don't let it go stale.
 - Vercel project: `hadararealestate` (team `hadara1`). Auto-deploys on push
   to `main`. Custom domain `www.hadararealestate.com` (verified).
 - Env vars (Production/Preview/Development): `RESEND_API_KEY`,
-  `CONTACT_TO_EMAIL=info@byhadara.com`.
+  `CONTACT_TO_EMAIL=info@byhadara.com`,
+  `CONTACT_FROM_EMAIL=HADARA Real Estate <no-reply@hadararealestate.com>`.
+- `hadararealestate.com` uses Vercel nameservers (`ns1`/`ns2.vercel-dns.com`)
+  — DNS for it is managed in the Vercel dashboard even though the domain
+  isn't a Vercel-registered domain (so `list_domains` won't show it, only
+  `list_project_domains` will). `byhadara.com` (the client's separate email
+  domain, used for `info@byhadara.com`) is on Wix nameservers instead —
+  different provider, not reachable through Vercel's DNS tools.
 
 ## Business info (verify with the client before changing)
 
 - Phone / WhatsApp: +90 531 930 9214 (same number for both).
-- Email: info@byhadara.com
+- Email: info@byhadara.com — no mailbox exists yet at hadararealestate.com,
+  and the client wants leads to keep landing at info@byhadara.com even
+  after domain verification (that's just about unlocking sending, not
+  where mail is received).
 - Location shown on site: Beylikdüzü, Istanbul, Türkiye (no street-level
   address given).
 - Working hours: Monday–Saturday, 9:00 AM–6:00 PM. Closed Sundays.
 - No social media accounts yet.
-- Resend account is in sandbox mode (domain `hadararealestate.com` not yet
-  verified in Resend) — emails can only be delivered to the address the
-  Resend account was signed up with (`info@byhadara.com`). Verifying the
-  domain (adding DNS records) would unlock sending to any recipient and a
-  branded from-address instead of `onboarding@resend.dev`.
+- `hadararealestate.com` is verified in Resend as of 2026-09-23 (client did
+  this themselves in the Resend dashboard, using its "Auto configure"
+  integration with Vercel to add the DNS records). Sending is no longer
+  sandboxed — Resend can now deliver to any recipient, and outgoing mail
+  uses the branded `CONTACT_FROM_EMAIL` above instead of
+  `onboarding@resend.dev`.
 
 ## Known gaps / ideas raised but not yet acted on
 
