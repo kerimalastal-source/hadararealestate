@@ -23,13 +23,31 @@ in chat history. Don't let it go stale.
   helper (built from ISO2 via Unicode regional indicators, not hand-typed)
   and `priorityIso2` (Turkey + Gulf countries, shown first in their own
   optgroup since that's HADARA's actual audience).
-- `components/Site.tsx` — homepage sections (hero, about, projects,
-  amenities, invest, contact CTA) + `Footer`.
+- `components/Site.tsx` — homepage sections (hero, about, projects teaser,
+  amenities, invest, contact CTA) + `Footer`. The homepage's own `#projects`
+  section still exists as a teaser (same 3 cards, big alternating layout),
+  but its "View project" links and the hero's "Explore our projects" button
+  now go to the dedicated `/projects` pages below, not to that anchor.
 - `components/Header.tsx` — sticky nav, language switcher, search modal.
   Client component. All internal links are locale-prefixed absolute paths
-  (`/${locale}#about`, `/${locale}/contact`, etc.), not bare `#anchor`s —
-  the header renders on every route (home, `/contact`), so a bare `#about`
-  would silently 404-scroll on any page that isn't the homepage.
+  (`/${locale}#about`, `/${locale}/projects`, `/${locale}/contact`, etc.),
+  not bare `#anchor`s — the header renders on every route, so a bare
+  `#about` would silently 404-scroll on any page that isn't the homepage.
+  The nav's "Projects" item and the search modal's per-project results both
+  point at the dedicated project pages (see below), not a homepage anchor.
+- `app/[locale]/projects/page.tsx` — projects listing page: intro (reusing
+  the `.page-intro` pattern from the contact page) + a 3-column card grid
+  (`.projects-grid`/`.project-card`), one card per `copy[locale].projects`
+  entry, each linking to its detail page.
+- `app/[locale]/projects/[slug]/page.tsx` — one page per project (slug is
+  locale-invariant, e.g. `lotus-koru`), statically generated for every
+  locale × project via `generateStaticParams`. Layout: back link, tag +
+  name, full-width hero image, description + a `facts` panel
+  (`.project-facts-panel`), an optional photo `gallery` grid, then a bottom
+  CTA band (`.project-cta`) with three buttons — Contact page, phone
+  (`tel:`), and WhatsApp (`wa.me`, prefilled with the project's name
+  appended to the generic `whatsappMessage`). An unknown `slug` calls
+  Next's `notFound()`.
 - `components/ContactForm.tsx` — client component, used on both the
   homepage contact section and the dedicated `/contact` page. Validates
   client-side, posts JSON to `/api/contact`.
@@ -125,11 +143,13 @@ in chat history. Don't let it go stale.
 
 ## Projects data sourced from the client's Wix site
 
-The `projects` array in `content/site.ts` (3 entries, all locales) was
-populated from the client's live Wix site (`byhadara.com`), read via the
-Wix MCP connector in Sept 2026 — that site has no separate `/projects`
-route in this Next.js app, so it maps to the homepage's `#projects`
-section, the closest existing equivalent:
+The `projects` array in `content/site.ts` (3 entries, all locales; each
+with `slug`, `name`, `tag`, `description`, `facts`, a cover `image`, and a
+`gallery` of 3 extra photo URLs) was populated from the client's live Wix
+site (`byhadara.com`), read via the Wix MCP connector in Sept 2026. It now
+also backs the dedicated `/projects` + `/projects/[slug]` pages (see Stack
+& structure above) — the homepage's `#projects` teaser reuses the same
+array.
 
 - **Marmara Haven Villa** — kept its existing (previously client-supplied)
   name/specs; only the photo was swapped for a real one.
@@ -158,8 +178,9 @@ network access to `static.wixstatic.com`.
 
 ## Known gaps / ideas raised but not yet acted on
 
-- No pricing/payment-plan info, no per-project detail pages, no project
-  photo galleries (each project still shows only one photo).
+- No pricing/payment-plan info on the project detail pages.
+- Each project's `gallery` only has 3 extra photos (picked from what was
+  available in the Wix Media Manager) — more could be added per project.
 - No press mentions, licenses, or testimonials for trust-building.
 - Social links (see Business info above) aren't surfaced anywhere on this
   site yet (e.g. footer icons).

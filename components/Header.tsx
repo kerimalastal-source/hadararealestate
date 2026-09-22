@@ -12,11 +12,11 @@ export function Header({ locale }: { locale: Locale }) {
   useEffect(() => { const close = (e: KeyboardEvent) => e.key === 'Escape' && (setSearch(false), setMenu(false)); document.addEventListener('keydown', close); return () => document.removeEventListener('keydown', close); }, []);
   const results = useMemo(() => [
     { label: d.nav[1], text: d.aboutText, href: `/${locale}#about` },
-    ...d.projects.map(p => ({ label: p.name, text: `${p.tag} ${p.description}`, href: `/${locale}#projects` })),
+    ...d.projects.map(p => ({ label: p.name, text: `${p.tag} ${p.description}`, href: `/${locale}/projects/${p.slug}` })),
     { label: d.nav[3], text: `${d.investTitle} ${d.investText}`, href: `/${locale}#invest` },
     { label: d.amenityTitle, text: d.amenities.join(' '), href: `/${locale}#amenities` },
   ].filter(x => !query.trim() || `${x.label} ${x.text}`.toLocaleLowerCase(locale).includes(query.toLocaleLowerCase(locale))), [d, locale, query]);
-  const targets = [`/${locale}#home`, `/${locale}#about`, `/${locale}#projects`, `/${locale}#invest`, `/${locale}/contact`];
+  const targets = [`/${locale}#home`, `/${locale}#about`, `/${locale}/projects`, `/${locale}#invest`, `/${locale}/contact`];
   return <>
     <header className="header"><div className="header-inner"><Link className="logo" href={`/${locale}`}><Image src="/images/logo.png" alt="HADARA" width={730} height={894} className="logo-mark" priority /><span className="logo-text"><strong>HADARA</strong><span>REAL ESTATE</span></span></Link>
       <nav className={menu ? 'nav open' : 'nav'}>{d.nav.map((x, i) => <a key={x} href={targets[i]} onClick={() => setMenu(false)}>{x}</a>)}</nav>
