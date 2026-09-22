@@ -112,7 +112,10 @@ in chat history. Don't let it go stale.
 - Location shown on site: Beylikdüzü, Istanbul, Türkiye (no street-level
   address given).
 - Working hours: Monday–Saturday, 9:00 AM–6:00 PM. Closed Sundays.
-- No social media accounts yet.
+- Social accounts exist (found on the client's Wix site, `byhadara.com`,
+  Sept 2026 — not previously listed here): LinkedIn
+  `tr.linkedin.com/company/hadaraps`, Instagram `@byhadara`, Facebook
+  `byhadara`. Not yet linked from this Next.js site.
 - `hadararealestate.com` is verified in Resend as of 2026-09-23 (client did
   this themselves in the Resend dashboard, using its "Auto configure"
   integration with Vercel to add the DNS records). Sending is no longer
@@ -120,13 +123,43 @@ in chat history. Don't let it go stale.
   uses the branded `CONTACT_FROM_EMAIL` above instead of
   `onboarding@resend.dev`.
 
+## Projects data sourced from the client's Wix site
+
+The `projects` array in `content/site.ts` (3 entries, all locales) was
+populated from the client's live Wix site (`byhadara.com`), read via the
+Wix MCP connector in Sept 2026 — that site has no separate `/projects`
+route in this Next.js app, so it maps to the homepage's `#projects`
+section, the closest existing equivalent:
+
+- **Marmara Haven Villa** — kept its existing (previously client-supplied)
+  name/specs; only the photo was swapped for a real one.
+- **Lotus Yaşam** — renamed from the old placeholder "Beylikdüzü Living";
+  same specs (21,000 m², 2028 delivery) since those already came from the
+  client and are corroborated by a real Dec 2025 drone photo of active
+  construction in the site's own Media Manager folder "Lotus Yaşam".
+- **Lotus Koru** — newly added third project, named after the Wix Media
+  Manager folders "Lotus Koru 1" / "Koru 2", which hold real (non-render)
+  photos of an apparently completed development. Its description is
+  intentionally generic (no unit counts, sizes, or delivery date) because
+  those specifics weren't available through the API — **verify with the
+  client before adding numeric facts for it**, same as the Business info
+  section above.
+
+All three project images are hotlinked directly to the Wix Media
+Manager's public CDN (`static.wixstatic.com` — allow-listed in
+`next.config.ts` under `images.remotePatterns`) rather than copied into
+`public/images/`, since the sandbox this migration ran in couldn't
+download the files (network egress to that domain was blocked). This
+means these three project photos depend on the client not deleting the
+originals from their Wix media library; downloading and re-hosting them
+locally under `public/images/projects/` would be more robust and matches
+this repo's usual convention — worth doing next time someone has normal
+network access to `static.wixstatic.com`.
+
 ## Known gaps / ideas raised but not yet acted on
 
-- Project photos are generic stock images that don't match what's
-  described (a villa project shows a glass tower, the "invest" section
-  shows a hotel room, one project reuses the hero's own photo). Needs real
-  photos or renders per project.
-- Only 2 projects listed — thin for a developer's credibility.
 - No pricing/payment-plan info, no per-project detail pages, no project
-  photo galleries.
+  photo galleries (each project still shows only one photo).
 - No press mentions, licenses, or testimonials for trust-building.
+- Social links (see Business info above) aren't surfaced anywhere on this
+  site yet (e.g. footer icons).
