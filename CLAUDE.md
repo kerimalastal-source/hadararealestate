@@ -71,7 +71,11 @@ in chat history. Don't let it go stale.
   bottom-right on every page (rendered from `app/[locale]/layout.tsx`).
 - `styles/globals.css` — single hand-written stylesheet, no framework.
   Design tokens as CSS custom properties on `:root` (`--ink`, `--forest`,
-  `--deep`, `--gold`, `--cream`, `--line`, `--wrap`). Dense, minified-ish
+  `--deep`, `--gold`, `--cream`, `--ivory`, `--line`, `--wrap`). The ivory
+  canvas (`#F7F5F0`) is balanced with `.surface-white` bands around the
+  homepage stats/about, contact location, and project detail intro. Project
+  cards and facts panels stay white; dark sections retain their colors.
+  Dense, minified-ish
   formatting is the established convention here — match it rather than
   reformatting into one-rule-per-line.
 - `public/images/logo.png` / `logo-gold.png` — the real HADARA "HE" mark,

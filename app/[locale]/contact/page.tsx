@@ -40,6 +40,7 @@ export default async function ContactPage({ params }: Props) {
       <h1>{d.contactPageTitle}</h1>
       <p className="lead">{d.contactPageIntro}</p>
     </section>
+    <div className="surface-white">
     <section className="location section wrap">
       <div className="location-map"><iframe src={mapSrc} title={d.contactMapTitle} loading="lazy" referrerPolicy="no-referrer-when-downgrade" /></div>
       <ul className="contact-info">
@@ -50,6 +51,7 @@ export default async function ContactPage({ params }: Props) {
         <li><IconClock/><div><strong>{d.contactHoursLabel}</strong><p>{d.contactHoursValue}</p></div></li>
       </ul>
     </section>
+    </div>
     <section className="contact section" id="contact"><div className="wrap contact-grid"><div><p className="kicker">HADARA · ISTANBUL</p><h2>{d.ctaTitle}</h2><p>{d.ctaText}</p></div><ContactForm locale={locale} d={d} /></div></section>
   </>;
 }
