@@ -12,7 +12,7 @@ export type SiteCopy = {
   investKicker: string; investTitle: string; investText: string; investPoints: string[];
   ctaTitle: string; ctaText: string; form: string[]; send: string; footer: string;
   formMessage: string; formRequired: string; formInvalidEmail: string; formSending: string;
-  formSuccessTitle: string; formSuccessText: string; formErrorText: string; formSendAnother: string;
+  formSuccessTitle: string; formSuccessText: string; formErrorText: string; formSendAnother: string; formPhoneCode: string;
 };
 
 export const copy: Record<Locale, SiteCopy> = {
@@ -28,7 +28,7 @@ export const copy: Record<Locale, SiteCopy> = {
     investKicker: 'Live & invest in Türkiye', investTitle: 'A home with a wider horizon.', investText: 'Our team supports international buyers through the property journey, from choosing the right home to understanding residence and citizenship pathways linked to qualified real estate investment.', investPoints: ['Property residence guidance', 'Turkish citizenship pathways', 'Local market expertise'],
     ctaTitle: 'Begin your Istanbul property journey.', ctaText: 'Tell us what you are looking for. A HADARA advisor will contact you shortly.', form: ['First name', 'Last name', 'Email address', 'Phone number'], send: 'Request a consultation', footer: 'Luxury real estate development in Istanbul, Türkiye.',
     formMessage: 'Your message', formRequired: 'Please fill in all required fields.', formInvalidEmail: 'Please enter a valid email address.', formSending: 'Sending…',
-    formSuccessTitle: 'Thank you.', formSuccessText: 'Your message has been received. A HADARA advisor will contact you shortly.', formErrorText: 'Something went wrong while sending your message. Please try again in a moment.', formSendAnother: 'Send another message',
+    formSuccessTitle: 'Thank you for reaching out.', formSuccessText: 'We truly appreciate your interest in HADARA. Your message has been received, and one of our advisors will personally contact you shortly to assist you.', formErrorText: 'Something went wrong while sending your message. Please try again in a moment.', formSendAnother: 'Send another message', formPhoneCode: 'Country code',
   },
   ar: {
     skip: 'انتقل إلى المحتوى', nav: ['الرئيسية', 'من نحن', 'المشاريع', 'لماذا تركيا', 'تواصل معنا'], search: 'بحث', searchPlaceholder: 'ابحث عن مشروع أو خدمة أو ميزة…', noResults: 'لا توجد نتائج مطابقة.', contact: 'تحدث مع فريقنا',
@@ -42,7 +42,7 @@ export const copy: Record<Locale, SiteCopy> = {
     investKicker: 'عِش واستثمر في تركيا', investTitle: 'منزل يفتح لك أفقًا أوسع.', investText: 'ندعم المشترين الدوليين في رحلتهم العقارية، من اختيار المنزل المناسب إلى فهم مسارات الإقامة والجنسية المرتبطة بالاستثمار العقاري المؤهل.', investPoints: ['إرشاد الإقامة العقارية', 'مسارات الجنسية التركية', 'خبرة بالسوق المحلي'],
     ctaTitle: 'ابدأ رحلتك العقارية في إسطنبول.', ctaText: 'أخبرنا عمّا تبحث عنه وسيتواصل معك مستشار من حضارة قريبًا.', form: ['الاسم الأول', 'اسم العائلة', 'البريد الإلكتروني', 'رقم الهاتف'], send: 'اطلب استشارة', footer: 'تطوير عقاري فاخر في إسطنبول، تركيا.',
     formMessage: 'رسالتك', formRequired: 'يرجى تعبئة جميع الحقول المطلوبة.', formInvalidEmail: 'يرجى إدخال بريد إلكتروني صحيح.', formSending: 'جارٍ الإرسال…',
-    formSuccessTitle: 'شكرًا لتواصلك معنا.', formSuccessText: 'تم استلام رسالتك بنجاح، وسيتواصل معك أحد مستشاري حضارة في أقرب وقت.', formErrorText: 'حدث خطأ أثناء إرسال رسالتك. يرجى المحاولة مرة أخرى بعد قليل.', formSendAnother: 'إرسال رسالة أخرى',
+    formSuccessTitle: 'شكرًا جزيلاً لتواصلك معنا.', formSuccessText: 'يسعدنا اهتمامك بحضارة للتطوير العقاري. تم استلام رسالتك بنجاح، وسيتواصل معك أحد مستشارينا شخصيًا في أقرب وقت ممكن لمساعدتك.', formErrorText: 'حدث خطأ أثناء إرسال رسالتك. يرجى المحاولة مرة أخرى بعد قليل.', formSendAnother: 'إرسال رسالة أخرى', formPhoneCode: 'مفتاح الدولة',
   },
   tr: {
     skip: 'İçeriğe geç', nav: ['Ana Sayfa', 'Hakkımızda', 'Projeler', 'Neden Türkiye', 'İletişim'], search: 'Ara', searchPlaceholder: 'Proje, olanak veya hizmet arayın…', noResults: 'Eşleşen sonuç bulunamadı.', contact: 'Ekibimizle görüşün',
@@ -56,6 +56,6 @@ export const copy: Record<Locale, SiteCopy> = {
     investKicker: 'Türkiye’de yaşayın ve yatırım yapın', investTitle: 'Daha geniş bir ufka açılan ev.', investText: 'Uluslararası alıcılara doğru evi seçmekten oturum ve vatandaşlık yollarını anlamaya kadar gayrimenkul yolculuğunda destek oluyoruz.', investPoints: ['Gayrimenkul oturum rehberliği', 'Türk vatandaşlığı yolları', 'Yerel pazar uzmanlığı'],
     ctaTitle: 'İstanbul’daki gayrimenkul yolculuğunuza başlayın.', ctaText: 'Aradığınız evi bize anlatın. HADARA danışmanı kısa süre içinde sizinle iletişime geçsin.', form: ['Ad', 'Soyad', 'E-posta adresi', 'Telefon numarası'], send: 'Danışmanlık talep edin', footer: 'İstanbul, Türkiye’de lüks gayrimenkul geliştirme.',
     formMessage: 'Mesajınız', formRequired: 'Lütfen tüm gerekli alanları doldurun.', formInvalidEmail: 'Lütfen geçerli bir e-posta adresi girin.', formSending: 'Gönderiliyor…',
-    formSuccessTitle: 'Teşekkür ederiz.', formSuccessText: 'Mesajınız alındı. Bir HADARA danışmanı kısa süre içinde sizinle iletişime geçecek.', formErrorText: 'Mesajınız gönderilirken bir sorun oluştu. Lütfen kısa bir süre sonra tekrar deneyin.', formSendAnother: 'Başka bir mesaj gönder',
+    formSuccessTitle: 'Bize ulaştığınız için teşekkür ederiz.', formSuccessText: 'HADARA’ya gösterdiğiniz ilgi için minnettarız. Mesajınız alındı; danışmanlarımızdan biri size yardımcı olmak üzere kısa süre içinde şahsen sizinle iletişime geçecek.', formErrorText: 'Mesajınız gönderilirken bir sorun oluştu. Lütfen kısa bir süre sonra tekrar deneyin.', formSendAnother: 'Başka bir mesaj gönder', formPhoneCode: 'Ülke kodu',
   },
 };

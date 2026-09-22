@@ -29,7 +29,7 @@ export async function POST(request: Request) {
   const message = typeof body.message === 'string' ? body.message.trim() : '';
   const locale = typeof body.locale === 'string' ? body.locale.slice(0, 5) : 'en';
 
-  if (!firstName || !lastName || !email || !message) {
+  if (!firstName || !lastName || !email || !phone || !message) {
     return NextResponse.json({ ok: false, error: 'missing-fields' }, { status: 400 });
   }
   if (!emailPattern.test(email) || [firstName, lastName, phone, email, message].some(v => v.length > MAX_LENGTH)) {
