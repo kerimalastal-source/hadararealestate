@@ -3,7 +3,7 @@ export type Locale = (typeof locales)[number];
 export const isLocale = (value: string): value is Locale => locales.includes(value as Locale);
 
 export type SiteCopy = {
-  skip: string; nav: string[]; search: string; searchPlaceholder: string; noResults: string; contact: string;
+  skip: string; nav: string[]; search: string; closeSearch: string; openMenu: string; closeMenu: string; searchPlaceholder: string; noResults: string; contact: string;
   heroKicker: string; heroTitle: string; heroText: string; heroImageAlt: string; interiorImageAlt: string; explore: string; since: string; stats: [string, string][];
   aboutKicker: string; aboutTitle: string; aboutText: string; fields: [string, string][];
   projectsKicker: string; projectsTitle: string; viewProject: string;
@@ -23,7 +23,7 @@ export type SiteCopy = {
 
 export const copy: Record<Locale, SiteCopy> = {
   en: {
-    skip: 'Skip to content', nav: ['Home', 'About', 'Projects', 'Why Türkiye', 'Contact'], search: 'Search', searchPlaceholder: 'Search projects, amenities, or services…', noResults: 'No matching results found.', contact: 'Talk to our team',
+    skip: 'Skip to content', nav: ['Home', 'About', 'Projects', 'Why Türkiye', 'Contact'], search: 'Search', closeSearch: 'Close search', openMenu: 'Open menu', closeMenu: 'Close menu', searchPlaceholder: 'Search projects, amenities, or services…', noResults: 'No matching results found.', contact: 'Talk to our team',
     heroKicker: 'Luxury real estate developer · Istanbul', heroTitle: 'Live beautifully.\nInvest wisely.', heroText: 'Distinctive homes and considered communities, created in Istanbul for modern life and long-term value.', heroImageAlt: 'Istanbul skyline and Bosphorus waterfront at sunset', interiorImageAlt: 'Contemporary luxury residential interior in Istanbul', explore: 'Explore our projects', since: 'Building with purpose since 2014', stats: [['2014', 'Founded in Istanbul'], ['3', 'Signature developments'], ['3', 'Regional partnerships']],
     aboutKicker: 'Who we are', aboutTitle: 'Spaces designed for the way life should feel.', aboutText: 'HADARA is an Istanbul-based developer of luxury villas and high-quality residential projects. Since 2014, we have combined elegant design, sustainable construction, and premium living environments for families and investors, supported by trusted partnerships across Qatar, Kuwait, and Saudi Arabia.', fields: [['01', 'Architectural services'], ['02', 'Residential project development'], ['03', 'Building materials export']],
     projectsKicker: 'Selected developments', projectsTitle: 'A considered approach to place.', viewProject: 'View project', projects: [
@@ -46,7 +46,7 @@ export const copy: Record<Locale, SiteCopy> = {
     formFieldRequired: 'Required', formRequiredNote: '* Required field', countryPriorityLabel: 'Popular', countryAllLabel: 'All countries',
   },
   ar: {
-    skip: 'انتقل إلى المحتوى', nav: ['الرئيسية', 'من نحن', 'المشاريع', 'لماذا تركيا', 'تواصل معنا'], search: 'بحث', searchPlaceholder: 'ابحث عن مشروع أو خدمة أو ميزة…', noResults: 'لا توجد نتائج مطابقة.', contact: 'تحدث مع فريقنا',
+    skip: 'انتقل إلى المحتوى', nav: ['الرئيسية', 'من نحن', 'المشاريع', 'لماذا تركيا', 'تواصل معنا'], search: 'بحث', closeSearch: 'إغلاق البحث', openMenu: 'فتح القائمة', closeMenu: 'إغلاق القائمة', searchPlaceholder: 'ابحث عن مشروع أو خدمة أو ميزة…', noResults: 'لا توجد نتائج مطابقة.', contact: 'تحدث مع فريقنا',
     heroKicker: 'تطوير عقاري فاخر · إسطنبول', heroTitle: 'عِش بجمال.\nواستثمر بحكمة.', heroText: 'منازل استثنائية ومجتمعات مدروسة نصنعها في إسطنبول للحياة العصرية والقيمة طويلة الأمد.', heroImageAlt: 'أفق إسطنبول ومضيق البوسفور وقت الغروب', interiorImageAlt: 'تصميم داخلي فاخر لشقة سكنية عصرية في إسطنبول', explore: 'استكشف مشاريعنا', since: 'نبني بهدف منذ عام 2014', stats: [['2014', 'تأسست في إسطنبول'], ['3', 'مشاريع مميزة'], ['3', 'شراكات إقليمية']],
     aboutKicker: 'من نحن', aboutTitle: 'مساحات مصممة لتمنح الحياة شعورها الحقيقي.', aboutText: 'حضارة مطوّر عقاري مقره إسطنبول، متخصص في الفلل الفاخرة والمشاريع السكنية عالية الجودة. منذ عام 2014، نجمع بين التصميم الأنيق والبناء المستدام وبيئات العيش الراقية للعائلات والمستثمرين.', fields: [['01', 'الخدمات المعمارية'], ['02', 'تطوير المشاريع السكنية'], ['03', 'تصدير مواد البناء']],
     projectsKicker: 'مشاريع مختارة', projectsTitle: 'رؤية مدروسة للمكان.', viewProject: 'عرض المشروع', projects: [
@@ -69,7 +69,7 @@ export const copy: Record<Locale, SiteCopy> = {
     formFieldRequired: 'حقل مطلوب', formRequiredNote: '* حقل مطلوب', countryPriorityLabel: 'الأكثر طلبًا', countryAllLabel: 'كل الدول',
   },
   tr: {
-    skip: 'İçeriğe geç', nav: ['Ana Sayfa', 'Hakkımızda', 'Projeler', 'Neden Türkiye', 'İletişim'], search: 'Ara', searchPlaceholder: 'Proje, olanak veya hizmet arayın…', noResults: 'Eşleşen sonuç bulunamadı.', contact: 'Ekibimizle görüşün',
+    skip: 'İçeriğe geç', nav: ['Ana Sayfa', 'Hakkımızda', 'Projeler', 'Neden Türkiye', 'İletişim'], search: 'Ara', closeSearch: 'Aramayı kapat', openMenu: 'Menüyü aç', closeMenu: 'Menüyü kapat', searchPlaceholder: 'Proje, olanak veya hizmet arayın…', noResults: 'Eşleşen sonuç bulunamadı.', contact: 'Ekibimizle görüşün',
     heroKicker: 'Lüks gayrimenkul geliştiricisi · İstanbul', heroTitle: 'Güzel yaşayın.\nAkıllıca yatırım yapın.', heroText: 'İstanbul’da modern yaşam ve uzun vadeli değer için tasarlanan seçkin evler ve özenli yaşam alanları.', heroImageAlt: 'Gün batımında İstanbul silüeti ve Boğaz kıyısı', interiorImageAlt: 'İstanbul’da çağdaş lüks konut iç mekânı', explore: 'Projelerimizi keşfedin', since: '2014’ten beri amaçla inşa ediyoruz', stats: [['2014', 'İstanbul’da kuruldu'], ['3', 'Özel proje'], ['3', 'Bölgesel ortaklık']],
     aboutKicker: 'Biz kimiz', aboutTitle: 'Hayatın hissettirmesi gerektiği gibi tasarlanan mekânlar.', aboutText: 'HADARA, İstanbul merkezli lüks villa ve nitelikli konut projeleri geliştiricisidir. 2014’ten bu yana aileler ve yatırımcılar için zarif tasarım, sürdürülebilir yapı ve seçkin yaşam alanlarını bir araya getiriyoruz.', fields: [['01', 'Mimari hizmetler'], ['02', 'Konut projesi geliştirme'], ['03', 'Yapı malzemeleri ihracatı']],
     projectsKicker: 'Seçili projeler', projectsTitle: 'Mekâna özenli bir yaklaşım.', viewProject: 'Projeyi görüntüle', projects: [
