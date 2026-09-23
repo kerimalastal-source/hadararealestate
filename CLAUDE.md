@@ -29,6 +29,14 @@ in chat history. Don't let it go stale.
   but its "View project" links and the hero's "Explore our projects" button
   now go to the dedicated `/projects` pages below, not to that anchor.
 - `components/Header.tsx` — sticky nav, language switcher, search modal.
+  Search is an ivory outlined button inside the main navigation, with an
+  always-visible icon shortcut on compact headers (≤1200px). The mobile
+  menu also includes the labeled search button. Search uses a native
+  `<dialog>` for focus containment and Escape handling, locks background
+  scrolling, and restores focus to the opener (or mobile shortcut).
+  Search/menu accessibility labels are translated in `content/site.ts`.
+  Results cover projects, the project listing and contact pages, and
+  the homepage about, investment and amenities sections.
   Client component. All internal links are locale-prefixed absolute paths
   (`/${locale}#about`, `/${locale}/projects`, `/${locale}/contact`, etc.),
   not bare `#anchor`s — the header renders on every route, so a bare
